@@ -1,0 +1,45 @@
+
+package clinicaveterinaria;
+
+import java.util.Scanner;
+
+public class ClinicaVeterinaria {
+
+    
+    public static void main(String[] args) {
+        
+        Scanner entrada=new Scanner(System.in);
+        
+        System.out.println("BIENVENIDOS A LA VETERINARIA");
+        System.out.println("ingrese cantidad de clientes   ");
+        int cantClientes=entrada.nextInt();
+        
+        Veterinaria v=new Veterinaria(cantClientes);
+        
+        for(int i=0;i<cantClientes; i++){
+            System.out.println("cliente nuevo");
+            System.out.println("----------------");
+            System.out.println("ingrese numero de cliente   ");
+            int numCliente=entrada.nextInt();
+            System.out.println("ingrese nombre de cliente   ");
+            String nomCliente=entrada.next();
+            System.out.println("ingrese antiguedad del cliente:   ");
+            int ant=entrada.nextInt();
+            
+            System.out.println("ingrese nombre de la mascota:   ");
+            String nomMasc=entrada.next();
+            System.out.println("ingrese edad de mascota:    ");
+            int edadMasc=entrada.nextInt();
+            
+            Mascota mascota=new Mascota(nomMasc,edadMasc);
+            Cliente cliente=new Cliente(numCliente,nomCliente,ant,mascota);
+            
+            v.AgregarClientes(cliente);
+        }
+        System.out.println("la cantidad de clientes es:   "+v.CantidadClientes());
+        System.out.println("promedio de edades de mascotas:   "+v.PromedioEdadMascotas());
+        System.out.println("clientes con ant mayor o igual a 5 años:   "+v.CantidadClientesAntiguedad());
+        
+    }
+    
+}
